@@ -10,9 +10,9 @@ int main(){
     while (scanf("%c", &ch)!= EOF && ch!='D')
     {
         if (ch=='A')
-            createMat(mat[N][N]);
+            createMat(mat);
         
-        if (ch=="B")
+        if (ch=='B')
         {
             if (scanf("%d%d", &i, &j)!=EOF) 
             {
@@ -28,8 +28,7 @@ int main(){
         {
             if (scanf("%d%d", &i, &j)!=EOF) 
             {
-                int num=shortestPath(i, j, mat);
-                printf("%d\n",&num);
+                printf("%d\n",shortestPath(i, j, mat));
             }
         }
         scanf("%c",&ch);
