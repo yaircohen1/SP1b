@@ -18,3 +18,8 @@ my_mat.o: my_mat.c my_mat.h
 
  my_Knapsack.o: my_Knapsack.c my_mat.h
 		$(CC) $(FLAGS) -c my_Knapsack.c
+
+.PHONY: clean all
+
+clean:
+	rm -f *.o  my_graph my_Knapsack
