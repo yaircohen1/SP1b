@@ -94,7 +94,7 @@ int main(){
     char products[L];
     int values[L]={0};
     int weights[L]={0};
-    // Insert input of products, values and weights
+    // Scan from user
     for(int i=0;i<L;i++){
         scanf(" %c",&products[i]);
         scanf("%d",&values[i]);
@@ -108,5 +108,7 @@ int main(){
     for(int i=0;i<L;i++){
             printf(" %c",result[i]);
         }
+    printf("\n");
+
     return 0;
 }
