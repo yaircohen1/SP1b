@@ -71,7 +71,6 @@ char* bringResult (int weight[], int values[], int selected_bool[]) {
       result_index++;
     }
   }
-
   return result;
 }
 
@@ -102,5 +101,6 @@ int main(){
             printf(" %c",result[i]);
         }
     }
+    free(result); // free the memory after we done 
     return 0;
 }
