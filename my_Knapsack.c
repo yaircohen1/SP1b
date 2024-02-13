@@ -57,8 +57,7 @@ int whichItemsInclude(int weights[], int values[], int selected_bool[]) {
 // Assumption: in class we learn that a call of function on array is saving
 // the changes that have been done so, we will pass the array selected_bool
 char* knapSack(int weight[], int values[], int selected_bool[]) {
-  char temp_result[L] = {'a', 'b', 'c', 'd', 'e'};
-  int counter = 0;
+  char temp_result[L] = {'a','b','c','d','e'};
 
   // create a result array, in the size of the number of items that have been
   // added to the bag
@@ -67,7 +66,6 @@ char* knapSack(int weight[], int values[], int selected_bool[]) {
   for (int i = 0; i < L; i++) {
     if (selected_bool[i] != 1) { // the item is not in the bag
       temp_result[i] = '\0';     // Null-terminate the string
-      counter++;
     }
   }
 
@@ -106,8 +104,10 @@ int main(){
     char* result = knapSack(weights,values,selected_bool);
     printf("Selected items:");
     for(int i=0;i<L;i++){
+       if (result[i] != '\0') {
             printf(" %c",result[i]);
         }
+    }
     printf("\n");
 
     return 0;
