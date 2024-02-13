@@ -6,9 +6,10 @@
 #define L 5
 #define BAG_WEIGHT 20
 
+
 // a function that decides which items include in the bag, such that the
 // weight will be <= 20 kg. return the maximal value of items in the bag
-int whichItemsInclude(int weights[], int values[], int selected_bool[]) {
+int knapSack(int weights[], int values[], int selected_bool[]) {
   // initialize zero
   memset(selected_bool, 0, L * sizeof(int));
 
@@ -46,7 +47,7 @@ int whichItemsInclude(int weights[], int values[], int selected_bool[]) {
 
 // Assumption: in class we learn that a call of function on array is saving
 // the changes that have been done so, we will pass the array selected_bool
-char* knapSack(int weight[], int values[], int selected_bool[]) {
+char* bringResult (int weight[], int values[], int selected_bool[]) {
   char temp_result[L] = {'a','b','c','d','e'};
 
   // create a result array, in the size of the number of items that have been
@@ -89,9 +90,9 @@ int main(){
         scanf("%d",&weights[i]);
     }
     // print results
-    int max=whichItemsInclude(weights,values,selected_bool);
+    int max=knapSack(weights,values,selected_bool);
     printf("Maximum profit: %d\n",max);
-    char* result = knapSack(weights,values,selected_bool);
+    char* result = bringResult(weights,values,selected_bool);
     printf("Selected items:");
     for(int i=0;i<L;i++){
        if (result[i] != '\0') {
