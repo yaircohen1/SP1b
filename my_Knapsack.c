@@ -53,6 +53,9 @@ char* bringResult (int weight[], int values[], int selected_bool[]) {
   // create a result array, in the size of the number of items that have been
   // added to the bag
   char* result = (char*)malloc(L * sizeof(char));
+    if(result==NULL){
+      printf("Error, there's not enough space");
+    }
 
   for (int i = 0; i < L; i++) {
     if (selected_bool[i] != 1) { // the item is not in the bag
