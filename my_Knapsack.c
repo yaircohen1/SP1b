@@ -6,18 +6,8 @@
 #define L 5
 #define BAG_WEIGHT 20
 
-// arrays declaration
-char items[L];
-int values[L];
-int weights[L];
-
-// b) program that gets a list of 5 items from the user,
-// and gives a weight and values for each one
-
-
-// b) a function that decides which items include in the bag, such that the
+// a function that decides which items include in the bag, such that the
 // weight will be <= 20 kg. return the maximal value of items in the bag
-
 int whichItemsInclude(int weights[], int values[], int selected_bool[]) {
   // initialize zero
   memset(selected_bool, 0, L * sizeof(int));
@@ -89,12 +79,12 @@ int findMax(int x,int y)
 
 int main(){
     int selected_bool[L];
-    char products[L];
+    char items[L];
     int values[L]={0};
     int weights[L]={0};
     // Scan from user
     for(int i=0;i<L;i++){
-        scanf(" %c",&products[i]);
+        scanf(" %c",&items[i]);
         scanf("%d",&values[i]);
         scanf("%d",&weights[i]);
     }
