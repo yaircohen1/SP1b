@@ -17,9 +17,9 @@ int main(){
             if (scanf("%d%d", &i, &j)!=EOF) 
             {
                 if (hasPath(i, j, mat)!=1)
-                    printf("True\n");
-                else
                     printf("False\n");
+                else
+                    printf("True\n");
 
             }
         }

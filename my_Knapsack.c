@@ -1,39 +1,32 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "my_mat.h"
 
-#define N 5
+#define L 5
 #define BAG_WEIGHT 20
 
 // arrays declaration
-char items[N];
-int values[N];
-int weights[N];
+char items[L];
+int values[L];
+int weights[L];
 
 // b) program that gets a list of 5 items from the user,
 // and gives a weight and values for each one
-void getItemsFromUser() {
-  for (int i = 0; i < N; i++) {
-    printf("Please enter %d's item value: ", i);
-    scanf("%d", &values[i]);
 
-    printf("Please enter %d's item weight: ", i);
-    scanf("%d", &weights[i]);
-  }
-}
 
 // b) a function that decides which items include in the bag, such that the
 // weight will be <= 20 kg. return the maximal value of items in the bag
 
 int whichItemsInclude(int weights[], int values[], int selected_bool[]) {
   // initialize zero
-  memset(selected_bool, 0, N * sizeof(int));
+  memset(selected_bool, 0, L * sizeof(int));
 
   // create a DP table
-  int dp[N + 1][BAG_WEIGHT + 1]; // +1 for 0-th row and column
+  int dp[L + 1][BAG_WEIGHT + 1]; // +1 for 0-th row and column
 
   // initializing the DP table
-  for (int i = 0; i <= N; i++) {
+  for (int i = 0; i <= L; i++) {
     for (int w = 0; w <= BAG_WEIGHT; w++) {
       if (i == 0 || w == 0)
         dp[i][w] = 0;
@@ -44,7 +37,7 @@ int whichItemsInclude(int weights[], int values[], int selected_bool[]) {
     }
   }
 
-  int j = N;
+  int j = L;
   int w = BAG_WEIGHT;
 
   // calculate which items are included in the bag
@@ -57,33 +50,30 @@ int whichItemsInclude(int weights[], int values[], int selected_bool[]) {
   }
 
   // calculate the maximum profit
-  int maximum_profit = dp[N][BAG_WEIGHT];
+  int maximum_profit = dp[L][BAG_WEIGHT];
   return maximum_profit;
 }
 
 // Assumption: in class we learn that a call of function on array is saving
 // the changes that have been done so, we will pass the array selected_bool
 char* knapSack(int weight[], int values[], int selected_bool[]) {
-  int maximim_profit = whichItemsInclude(weight, values, selected_bool);
-
-  char temp_result[N] = {'A', 'B', 'C', 'D', 'E'};
+  char temp_result[L] = {'a', 'b', 'c', 'd', 'e'};
   int counter = 0;
 
   // create a result array, in the size of the number of items that have been
   // added to the bag
-  char* result = (char*)malloc(N * sizeof(char));
+  char* result = (char*)malloc(L * sizeof(char));
 
-  for (int i = 0; i < N; i++) {
+  for (int i = 0; i < L; i++) {
     if (selected_bool[i] != 1) { // the item is not in the bag
       temp_result[i] = '\0';     // Null-terminate the string
       counter++;
     }
   }
 
-  int M = N - counter;
   int result_index = 0;
 
-  for (int i = 0; i < N; i++) {
+  for (int i = 0; i < L; i++) {
     if (temp_result[i] != '\0') { // the item is not in the bag
       result[result_index] = temp_result[i];
       result_index++;
@@ -97,4 +87,26 @@ int findMax(int x,int y)
 {
     if(x>y) return x;
     else return y;
+}
+
+int main(){
+    int selected_bool[L];
+    char products[L];
+    int values[L]={0};
+    int weights[L]={0};
+    // Insert input of products, values and weights
+    for(int i=0;i<L;i++){
+        scanf(" %c",&products[i]);
+        scanf("%d",&values[i]);
+        scanf("%d",&weights[i]);
+    }
+    // print results
+    int max=whichItemsInclude(weights,values,selected_bool);
+    printf("Maximum profit: %d\n",max);
+    char* result = knapSack(weights,values,selected_bool);
+    printf("Selected items:");
+    for(int i=0;i<L;i++){
+            printf(" %c",result[i]);
+        }
+    return 0;
 }

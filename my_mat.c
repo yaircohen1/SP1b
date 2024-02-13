@@ -11,6 +11,7 @@ void createMat(int mat[N][N])
             mat[i][j]=temp;
         }
     }
+    FloydWarshallAlgorithm(mat);
 }
 
 void FloydWarshallAlgorithm(int mat[N][N])
