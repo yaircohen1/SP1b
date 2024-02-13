@@ -108,7 +108,5 @@ int main(){
             printf(" %c",result[i]);
         }
     }
-    printf("\n");
-
     return 0;
 }
